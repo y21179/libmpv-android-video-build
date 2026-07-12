@@ -6,8 +6,13 @@
 
 mkdir -p deps && cd deps
 
-# mbedtls
-[ ! -d mbedtls ] && git clone --depth 1 --branch v$v_mbedtls https://github.com/Mbed-TLS/mbedtls.git mbedtls
+# mbedtls (3.6+ requires framework submodule for Makefile)
+if [ ! -d mbedtls ]; then
+    git clone --depth 1 --branch v$v_mbedtls https://github.com/Mbed-TLS/mbedtls.git mbedtls
+    cd mbedtls
+    git submodule update --init --recursive --depth 1
+    cd ..
+fi
 
 # dav1d
 [ ! -d dav1d ] && git clone --depth 1 --branch $v_dav1d https://code.videolan.org/videolan/dav1d.git dav1d
