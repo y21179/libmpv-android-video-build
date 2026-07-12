@@ -54,8 +54,8 @@ Shaderc sources are provided by the NDK.
 see <ndk>/sources/third_party/shaderc
 HEREDOC
 
-# mpv
-[ ! -d mpv ] && git clone https://github.com/mpv-player/mpv.git mpv && cd mpv && git reset --hard 78d43740f52db817d98bcf24fb30a76ab6fa13ff && cd ..
+# mpv (v0.38.0: native FFmpeg 7.x compat, replaces 78d43740 which used AV_OPT_TYPE_CHANNEL_LAYOUT)
+[ ! -d mpv ] && git clone --depth 1 --branch v0.38.0 https://github.com/mpv-player/mpv.git mpv
 
 # fftools_ffi
 [ ! -d fftools_ffi ] && git clone https://github.com/moffatman/fftools-ffi.git fftools_ffi && cd fftools_ffi && git reset --hard 9b0d4da026d9c830702ec043c1f1f98d407025af && cd ..
